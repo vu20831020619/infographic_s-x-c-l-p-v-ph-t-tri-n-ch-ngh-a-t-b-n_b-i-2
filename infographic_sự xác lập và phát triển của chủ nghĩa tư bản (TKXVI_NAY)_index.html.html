@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Lịch sử Chủ nghĩa Tư bản (XVI - Nay)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .chart-container {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            width: 100%;
+            max-width: 600px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flowchart-node {
+            transition: all 0.3s ease;
+        }
+        .flowchart-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #F6511D;
+            border: 4px solid #FFFFFF;
+        }
+        .drag-item {
+            cursor: grab;
+            user-select: none;
+            background-color: #E0E7FF;
+            border: 1px solid #93C5FD;
+            color: #1E40AF;
+        }
+        .drop-zone {
+            background-color: #F0F5F9;
+            border: 2px dashed #CBD5E1;
+        }
+        .drop-zone.correct {
+            background-color: #D1FAE5;
+            border-color: #34D399;
+        }
+        .drop-zone.incorrect {
+            background-color: #FEE2E2;
+            border-color: #EF4444;
+        }
+        .feedback-correct {
+            color: #10B981;
+        }
+        .feedback-incorrect {
+            color: #EF4444;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00A6ED] to-[#7FB800]">Hành Trình của Chủ Nghĩa Tư Bản</h1>
+            <p class="text-xl md:text-2xl font-semibold mt-2" style="color: #2F2F2F;">Từ Thế Kỷ XVI đến Kỷ Nguyên Số</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="giai-doan-1" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold" style="color: #00A6ED;">Tiết 1: Sự Xác Lập (Thế kỷ XVI - XVIII)</h2>
+                    <p class="text-gray-600 mt-2">Giai đoạn bản lề, nơi các cuộc cách mạng tư sản và cách mạng công nghiệp đã phá vỡ trật tự phong kiến, mở đường cho một hệ thống kinh tế mới.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-center" style="color: #2F2F2F;">Các cuộc cách mạng tư sản tiêu biểu</h3>
+                        <p class="text-sm text-gray-600 mb-4">Các cuộc cách mạng này đóng vai trò then chốt trong việc xóa bỏ tàn dư của hệ thống phong kiến trung cổ và mở đường cho sự trỗi dậy của chủ nghĩa tư bản.</p>
+                        <div class="relative pl-8 border-l-4" style="border-color: #00A6ED;">
+                            <div class="timeline-item mb-8 pl-8">
+                                <h4 class="font-semibold">Cách mạng Hà Lan (TK XVI)</h4>
+                                <p class="text-sm text-gray-600">Mở đầu cho các cuộc cách mạng tư sản, xác lập nền cộng hòa thương nghiệp.</p>
+                            </div>
+                            <div class="timeline-item mb-8 pl-8">
+                                <h4 class="font-semibold">Cách mạng Anh (TK XVII)</h4>
+                                <p class="text-sm text-gray-600">Lật đổ chế độ quân chủ chuyên chế, thiết lập quân chủ lập hiến.</p>
+                            </div>
+                            <div class="timeline-item mb-8 pl-8">
+                                <h4 class="font-semibold">Chiến tranh giành độc lập ở Bắc Mỹ (TK XVIII)</h4>
+                                <p class="text-sm text-gray-600">Thành lập Hợp chúng quốc Hoa Kỳ, mở rộng CNTB ra ngoài châu Âu.</p>
+                            </div>
+                            <div class="timeline-item pl-8">
+                                <h4 class="font-semibold">Cách mạng Pháp (Cuối TK XVIII)</h4>
+                                <p class="text-sm text-gray-600">Xóa bỏ triệt để tàn dư phong kiến với khẩu hiệu "Tự do - Bình đẳng - Bác ái".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Tác động của Cách mạng Công nghiệp lần thứ nhất</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4">Cách mạng công nghiệp đã tạo ra một bước nhảy vọt về năng suất, khẳng định sự thắng lợi của phương thức sản xuất tư bản chủ nghĩa, đặc biệt là ở Anh.</p>
+                        <div class="chart-container">
+                            <canvas id="industrialRevolutionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="giai-doan-2" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold" style="color: #7FB800;">Tiết 2: Mở Rộng & Chuyển Mình (Cuối TK XIX - 1945)</h2>
+                    <p class="text-gray-600 mt-2">Cạnh tranh tự do nhường chỗ cho độc quyền. Nhu cầu về thị trường và nguyên liệu thúc đẩy chủ nghĩa đế quốc và quá trình xâm lược thuộc địa trên toàn cầu.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                     <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Phân chia thuộc địa đầu thế kỷ XX</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4">Các cường quốc đế quốc đã phân chia gần như toàn bộ thế giới, tạo ra một hệ thống thuộc địa rộng lớn để khai thác tài nguyên và thị trường, dẫn đến các mâu thuẫn sâu sắc.</p>
+                        <div class="chart-container">
+                            <canvas id="colonialExpansionChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-center" style="color: #2F2F2F;">Từ Cạnh Tranh Tự Do Đến Độc Quyền</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4">Quá trình cạnh tranh khốc liệt đã loại bỏ các doanh nghiệp nhỏ, dẫn đến sự tập trung tư bản và hình thành các tổ chức độc quyền khổng lồ như Cartel, Syndicate, Trust.</p>
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="flowchart-node w-full text-center p-4 rounded-lg border-2" style="border-color: #7FB800; background-color: #f7fee7;">
+                                <p class="font-semibold">Cạnh tranh tự do</p>
+                            </div>
+                            <div class="text-2xl font-bold" style="color: #7FB800;">&darr;</div>
+                            <div class="flowchart-node w-full text-center p-4 rounded-lg border-2" style="border-color: #7FB800; background-color: #f7fee7;">
+                                <p class="font-semibold">Tích tụ & Tập trung sản xuất</p>
+                            </div>
+                             <div class="text-2xl font-bold" style="color: #7FB800;">&darr;</div>
+                            <div class="flowchart-node w-full text-center p-4 rounded-lg border-2" style="border-color: #7FB800; background-color: #f7fee7;">
+                                <p class="font-semibold">Hình thành Tổ chức Độc quyền</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="giai-doan-3" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold" style="color: #FFB400;">Tiết 3: Chủ Nghĩa Tư Bản Hiện Đại (1945 - Nay)</h2>
+                    <p class="text-gray-600 mt-2">Giai đoạn của độc quyền nhà nước, toàn cầu hóa, cách mạng công nghệ, và những mâu thuẫn sâu sắc giữa tiềm năng phát triển và các thách thức toàn cầu.</p>
+                </div>
+
+                <div class="mb-12">
+                     <h3 class="text-xl font-bold text-center mb-6" style="color: #2F2F2F;">Đặc Trưng Cơ Bản</h3>
+                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4 rounded-lg bg-gray-100">
+                            <span class="text-4xl">🏛️</span>
+                            <h4 class="font-bold mt-2">Độc quyền Nhà nước</h4>
+                            <p class="text-sm text-gray-600">Nhà nước can thiệp, điều tiết kinh tế.</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-gray-100">
+                            <span class="text-4xl">🚀</span>
+                            <h4 class="font-bold mt-2">Cách mạng KH-KT</h4>
+                            <p class="text-sm text-gray-600">Công nghệ trở thành lực lượng sản xuất trực tiếp.</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-gray-100">
+                            <span class="text-4xl">🌍</span>
+                            <h4 class="font-bold mt-2">Toàn cầu hóa</h4>
+                            <p class="text-sm text-gray-600">Các công ty đa quốc gia chi phối chuỗi cung ứng.</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-gray-100">
+                            <span class="text-4xl">⚖️</span>
+                            <h4 class="font-bold mt-2">Tự điều chỉnh</h4>
+                            <p class="text-sm text-gray-600">Chính sách phúc lợi xã hội để làm dịu mâu thuẫn.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Tiềm năng: Sức sản xuất vượt trội & Đổi mới liên tục</h3>
+                        <p class="text-sm text-gray-600 mb-4">Chủ nghĩa tư bản hiện đại có sức sản xuất phát triển cao chưa từng có, luôn đi đầu trong phát triển kinh tế thế giới. Điều này dựa trên việc ứng dụng mạnh mẽ các thành tựu của **cách mạng khoa học - công nghệ** (CMKH-CN), đặc biệt là trong kỷ nguyên số và Cách mạng Công nghiệp 4.0. CMKH-CN đã đẩy nhanh năng suất lao động, nâng cao chất lượng sản phẩm, tạo ra các ngành nghề và sản phẩm mới, và tăng cường sức cạnh tranh vượt trội.</p>
+                        <div class="chart-container">
+                            <canvas id="goldenAgeChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-2">Biểu đồ mô phỏng tăng trưởng GDP trung bình các nước Tây Âu trong "Thời kỳ Hoàng kim" (1950-1973).</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Tiềm năng: Hệ thống quản lý & Khả năng thích nghi</h3>
+                        <p class="text-sm text-gray-600 mb-4">Hệ thống này có bề dày kinh nghiệm và phương pháp quản lý kinh tế tiên tiến, từ quản lý doanh nghiệp đến điều tiết vĩ mô. Đồng thời, chủ nghĩa tư bản phát triển một hệ thống pháp chế hoàn chỉnh, phát huy những giá trị văn hóa – chính trị như thượng tôn pháp luật, dân chủ và phúc lợi xã hội, tạo ra một môi trường kinh doanh tương đối ổn định và minh bạch. CNTB có khả năng tự điều chỉnh và thích nghi mạnh mẽ thông qua vai trò điều tiết vĩ mô của độc quyền nhà nước, ban hành chính sách phúc lợi xã hội và phát triển công ty cổ phần.</p>
+                        <div class="chart-container">
+                             <canvas id="managementAdaptationChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-2">Biểu đồ mô phỏng mức độ phát triển của các khía cạnh quản lý và thích nghi trong CNTB hiện đại (mô phỏng).</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Thách thức: Bất bình đẳng thu nhập & xã hội</h3>
+                         <p class="text-sm text-gray-600 mb-4">Khoảng cách giàu nghèo ngày càng lớn là một trong những mâu thuẫn cố hữu của CNTB hiện đại. Của cải tập trung vào tay một bộ phận nhỏ dân số, trong khi phần lớn người lao động phải đối mặt với thu nhập thấp và điều kiện sống khó khăn. Dù CNTB tạo ra của cải chưa từng có, cơ chế phân phối của nó thường dẫn đến sự chênh lệch nghiêm trọng, gây căng thẳng xã hội.</p>
+                        <div class="chart-container">
+                            <canvas id="inequalityChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-2">Biểu đồ mô phỏng sự thay đổi trong phân chia thu nhập quốc dân tại các nước phát triển (so sánh thu nhập Top 1% và Bottom 50%).</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Thách thức: Khủng hoảng kinh tế - tài chính</h3>
+                        <p class="text-sm text-gray-600 mb-4">Các cuộc khủng hoảng kinh tế - tài chính vẫn diễn ra theo chu kỳ, gây ra những hậu quả nặng nề trên quy mô toàn cầu, điển hình là cuộc khủng hoảng năm 2008. Mâu thuẫn giữa tính chất xã hội hóa cao của lực lượng sản xuất với chế độ sở hữu tư nhân tư bản chủ nghĩa vẫn tồn tại, dẫn đến các mối đe dọa hệ thống (sinh thái, xã hội, chính trị) thách thức sự bền vững dài hạn của mô hình tư bản chủ nghĩa.</p>
+                        <div class="chart-container">
+                            <canvas id="crisisChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-2">Biểu đồ mô phỏng tần suất và tác động của các cuộc khủng hoảng tài chính lớn.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Thách thức: Tác động môi trường & Khủng hoảng khí hậu</h3>
+                        <p class="text-sm text-gray-600 mb-4">Việc theo đuổi lợi nhuận không kiểm soát đã thúc đẩy việc khai thác cạn kiệt tài nguyên thiên nhiên và gây ô nhiễm môi trường nghiêm trọng. Điều này dẫn đến các cuộc khủng hoảng năng lượng, lương thực và đặc biệt là khủng hoảng khí hậu toàn cầu, tạo ra một "nền kinh tế carbon cao" với những tác động gần như không thể đảo ngược.</p>
+                        <div class="chart-container">
+                            <canvas id="environmentChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-2">Phân bổ các nguồn phát thải khí nhà kính toàn cầu theo ngành kinh tế (ước tính).</p>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Thách thức: Độc quyền Công nghệ (Big Tech) & An ninh phi truyền thống</h3>
+                        <p class="text-sm text-gray-600 mb-4">Sự trỗi dậy của các gã khổng lồ công nghệ tạo ra hình thức độc quyền mới, kiểm soát thị trường và khai thác dữ liệu ("chủ nghĩa tư bản giám sát"). Các công ty này kiếm tiền từ hành vi con người, gây ra rủi ro cho quyền riêng tư, cạnh tranh và thậm chí là dân chủ. Cùng với đó là các vấn đề an ninh phi truyền thống như an ninh mạng, an ninh dữ liệu.</p>
+                        <div class="chart-container">
+                            <canvas id="bigTechChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-2">Giá trị vốn hóa thị trường của các công ty công nghệ lớn (ước tính).</p>
+                    </div>
+                    <div class="lg:col-span-2 p-6 bg-red-50 rounded-lg border-2 border-red-200">
+                        <h3 class="text-xl font-bold text-red-600 mb-2">Thách thức: Vấn đề chính trị, xã hội nan giải</h3>
+                        <p class="text-sm text-gray-700">Nạn thất nghiệp, xung đột sắc tộc, tôn giáo, xói mòn các thiết chế dân chủ, và thực tế dân chủ chỉ dành cho một bộ phận thiểu số vẫn hiện hữu. Sự gia tăng của chủ nghĩa dân túy và các phong trào phản kháng xã hội cũng là hệ quả của những mâu thuẫn này.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="game-timeline" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold" style="color: #00A6ED;">Trò Chơi: Sắp Xếp Lịch Sử Chủ Nghĩa Tư Bản</h2>
+                    <p class="text-gray-600 mt-2">Hãy kéo và thả các đặc trưng vào đúng giai đoạn phát triển của Chủ nghĩa Tư bản!</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div id="drop-zone-1" class="drop-zone p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[150px]" data-period="1">
+                        <h3 class="font-bold text-lg" style="color: #00A6ED;">Giai đoạn 1: Sơ khai/Tự do cạnh tranh</h3>
+                        <p class="text-sm text-gray-500">(Thế kỷ XVI - giữa XIX)</p>
+                    </div>
+                    <div id="drop-zone-2" class="drop-zone p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[150px]" data-period="2">
+                        <h3 class="font-bold text-lg" style="color: #00A6ED;">Giai đoạn 2: Độc quyền/Đế quốc chủ nghĩa</h3>
+                        <p class="text-sm text-gray-500">(Cuối XIX - 1945)</p>
+                    </div>
+                    <div id="drop-zone-3" class="drop-zone p-4 rounded-lg text-center flex flex-col items-center justify-center min-h-[150px]" data-period="3">
+                        <h3 class="font-bold text-lg" style="color: #00A6ED;">Giai đoạn 3: Hiện đại</h3>
+                        <p class="text-sm text-gray-500">(1945 - Nay)</p>
+                    </div>
+                </div>
+
+                <div id="drag-items-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="2">Hình thành các tổ chức độc quyền (Cartel, Trust)</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="1">Kinh tế tự do kinh doanh, ít can thiệp nhà nước</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="3">Ứng dụng thành tựu cách mạng khoa học - kỹ thuật</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="1">Sự xác lập của CNTB ở Hà Lan, Anh, Pháp, Bắc Mỹ</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="2">Tăng cường xâm lược thuộc địa, chia nhau thế giới</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="3">Độc quyền nhà nước: Nhà nước can thiệp, điều tiết kinh tế</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="2">Xuất khẩu tư bản trở nên đặc biệt quan trọng</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="3">Toàn cầu hóa kinh tế và công ty đa quốc gia phát triển</div>
+                    <div class="drag-item p-3 rounded-md shadow-sm text-center" draggable="true" data-correct-period="1">Cách mạng Công nghiệp lần thứ nhất ở Anh</div>
+                </div>
+
+                <div class="text-center">
+                    <button id="check-answers-btn" class="bg-[#F6511D] text-white px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all duration-200 shadow-md">Kiểm tra Đáp án</button>
+                    <button id="reset-game-btn" class="bg-gray-400 text-white px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all duration-200 shadow-md ml-4">Chơi lại</button>
+                    <p id="game-feedback" class="mt-4 text-lg font-semibold"></p>
+                </div>
+            </section>
+
+            <section id="ung-dung-thoi-su" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold" style="color: #7FB800;">Vận Dụng: Giải Thích Vấn Đề Thời Sự</h2>
+                    <p class="text-gray-600 mt-2">Hiểu về lịch sử CNTB giúp chúng ta lý giải các cuộc khủng hoảng và những xu thế định hình thế giới ngày nay.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Nghiên cứu tình huống 1: Khủng hoảng tài chính toàn cầu 2008</h3>
+                        <p class="text-sm text-gray-600 mb-4">Cuộc khủng hoảng này bắt nguồn từ bong bóng nhà đất ở Hoa Kỳ, được thúc đẩy bởi việc cho vay thế chấp dưới chuẩn và sự thiếu hụt quy định. Khi giá nhà đất giảm và người vay vỡ nợ, các ngân hàng và tổ chức tài chính lớn đã phải đối mặt với thua lỗ khổng lồ, dẫn đến sự sụp đổ của các định chế như Lehman Brothers.</p>
+                        <div class="flex flex-col items-center space-y-2">
+                             <div class="flowchart-node w-full text-center p-3 rounded-lg border-2" style="border-color: #F6511D; background-color: #fff8f2;">Bong bóng nhà đất & cho vay dưới chuẩn</div>
+                             <div class="text-2xl font-bold" style="color: #F6511D;">&darr;</div>
+                             <div class="flowchart-node w-full text-center p-3 rounded-lg border-2" style="border-color: #F6511D; background-color: #fff8f2;">Vỡ nợ hàng loạt, ngân hàng thua lỗ</div>
+                             <div class="text-2xl font-bold" style="color: #F6511D;">&darr;</div>
+                             <div class="flowchart-node w-full text-center p-3 rounded-lg border-2" style="border-color: #F6511D; background-color: #fff8f2;">Sụp đổ hệ thống (Lehman Brothers phá sản)</div>
+                             <div class="text-2xl font-bold" style="color: #F6511D;">&darr;</div>
+                             <div class="flowchart-node w-full text-center p-3 rounded-lg border-2" style="border-color: #F6511D; background-color: #fff8f2;">Suy thoái kinh tế toàn cầu</div>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold text-center mb-4" style="color: #2F2F2F;">Nghiên cứu tình huống 2: Độc quyền Công nghệ (Big Tech)</h3>
+                        <p class="text-sm text-gray-600 mb-4">Sự trỗi dậy của các gã khổng lồ công nghệ đặt ra những thách thức mới về cạnh tranh, quyền riêng tư và bản chất của tư bản trong kỷ nguyên số. Các công ty này kiểm soát thị trường và khai thác dữ liệu, dẫn đến việc bóc lột lợi nhuận và tích lũy tài sản tài chính khổng lồ.</p>
+                        <div class="chart-container">
+                            <canvas id="bigTechApplicationChart"></canvas>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t-2 border-gray-200">
+            <h3 class="text-2xl font-bold" style="color: #2F2F2F;">Tổng Kết</h3>
+            <p class="text-gray-600 max-w-4xl mx-auto mt-4">Trải qua hơn 5 thế kỷ, chủ nghĩa tư bản đã chứng tỏ mình là một hệ thống kinh tế năng động, có khả năng tự điều chỉnh và tạo ra sức sản xuất vật chất khổng lồ. Tuy nhiên, nó cũng luôn tồn tại những mâu thuẫn nội tại về bất bình đẳng, khủng hoảng và bóc lột. Hiểu rõ hành trình lịch sử này là chìa khóa để nhận thức đúng đắn về thế giới phức tạp mà chúng ta đang sống.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const energeticPalette = {
+                blue: '#00A6ED',
+                green: '#7FB800',
+                yellow: '#FFB400',
+                orange: '#F6511D',
+                dark: '#2F2F2F',
+            };
+
+            const wrapLabel = (label, maxLength = 16) => {
+                if (typeof label !== 'string' || label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine += (currentLine.length === 0 ? '' : ' ') + word;
+                    }
+                }
+                if (currentLine.length > 0) {
+                    lines.push(currentLine);
+                }
+                return lines;
+            };
+
+            const multiLineTooltipTitle = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                if (!item) return '';
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+            
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            Chart.defaults.color = energeticPalette.dark;
+
+            const industrialRevolutionCtx = document.getElementById('industrialRevolutionChart').getContext('2d');
+            new Chart(industrialRevolutionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Sản xuất Sắt', 'Sản xuất Than đá', 'Sản lượng Bông vải'],
+                    datasets: [{
+                        label: 'Tăng trưởng sản lượng (lần, 1750-1850)',
+                        data: [100, 20, 50],
+                        backgroundColor: [energeticPalette.blue, energeticPalette.dark, energeticPalette.orange],
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { display: false }, title: { display: false } },
+                    scales: { x: { grid: { display: false } }, y: { beginAtZero: true } }
+                }
+            });
+
+            const colonialExpansionCtx = document.getElementById('colonialExpansionChart').getContext('2d');
+            new Chart(colonialExpansionCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Đế quốc Anh', 'Đế quốc Pháp', 'Các đế quốc khác'],
+                    datasets: [{
+                        label: '% diện tích toàn cầu (~1914)',
+                        data: [25, 10, 15],
+                        backgroundColor: [energeticPalette.green, energeticPalette.blue, energeticPalette.yellow],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { position: 'bottom' }, title: { display: false } }
+                }
+            });
+
+            const goldenAgeCtx = document.getElementById('goldenAgeChart').getContext('2d');
+            new Chart(goldenAgeCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1950', '1955', '1960', '1965', '1970', '1973'],
+                    datasets: [{
+                        label: 'Tăng trưởng GDP trung bình Tây Âu (%)',
+                        data: [5.5, 4.8, 5.2, 4.9, 4.7, 4.0],
+                        borderColor: energeticPalette.yellow,
+                        backgroundColor: 'rgba(255, 180, 0, 0.1)',
+                        fill: true, tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { display: false }, title: { display: false } },
+                    scales: { y: { beginAtZero: false }, x: { grid: { display: false } } }
+                }
+            });
+
+            const managementAdaptationCtx = document.getElementById('managementAdaptationChart').getContext('2d');
+            new Chart(managementAdaptationCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Quản lý Vĩ mô', 'Pháp chế', 'Phúc lợi XH', 'Điều chỉnh Sở hữu', 'Thích nghi Thị trường'],
+                    datasets: [{
+                        label: 'Mức độ phát triển',
+                        data: [90, 85, 75, 80, 95],
+                        backgroundColor: 'rgba(0, 166, 237, 0.2)',
+                        borderColor: energeticPalette.blue,
+                        borderWidth: 2,
+                        pointBackgroundColor: energeticPalette.blue,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: energeticPalette.blue
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { display: false }, title: { display: false } },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: false
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            const inequalityCtx = document.getElementById('inequalityChart').getContext('2d');
+            new Chart(inequalityCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1980', '1990', '2000', '2010', '2020'],
+                    datasets: [{
+                        label: 'Thu nhập của Top 1%',
+                        data: [10, 14, 18, 20, 22],
+                        borderColor: energeticPalette.orange,
+                        tension: 0.4,
+                    }, {
+                        label: 'Thu nhập của Bottom 50%',
+                        data: [20, 18, 15, 13, 12],
+                        borderColor: energeticPalette.blue,
+                        tension: 0.4,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { position: 'bottom' }, title: { display: true, text: 'Phần trăm Thu nhập Quốc dân', font: { size: 14 } } },
+                    scales: { y: { ticks: { callback: value => value + '%' } }, x: { grid: { display: false } } }
+                }
+            });
+
+            const crisisCtx = document.getElementById('crisisChart').getContext('2d');
+            new Chart(crisisCtx, {
+                type: 'bar',
+                data: {
+                    labels: [wrapLabel('Khủng hoảng Dầu mỏ 1973'), wrapLabel('Khủng hoảng Nợ Mỹ Latinh 1980s'), wrapLabel('Khủng hoảng Châu Á 1997'), wrapLabel('Khủng hoảng Tài chính Toàn cầu 2008')],
+                    datasets: [{
+                        label: 'Tác động ước tính (Điểm)',
+                        data: [60, 55, 75, 95],
+                        backgroundColor: energeticPalette.yellow,
+                        borderColor: energeticPalette.dark,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { display: false }, title: { display: false } },
+                    scales: { y: { beginAtZero: true }, x: { grid: { display: false } } }
+                }
+            });
+
+            const environmentCtx = document.getElementById('environmentChart').getContext('2d');
+            new Chart(environmentCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Năng lượng (Điện, Nhiệt)', 'Nông nghiệp & Lâm nghiệp', 'Công nghiệp', 'Giao thông vận tải', 'Xây dựng'],
+                    datasets: [{
+                        label: 'Phần trăm phát thải khí nhà kính',
+                        data: [31, 24, 21, 14, 10],
+                        backgroundColor: [
+                            energeticPalette.orange,
+                            energeticPalette.green,
+                            energeticPalette.yellow,
+                            energeticPalette.blue,
+                            energeticPalette.dark
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { position: 'bottom' }, title: { display: false } }
+                }
+            });
+
+            const bigTechChartData = {
+                labels: ['Apple', 'Microsoft', 'Alphabet', 'Amazon', 'Meta'],
+                datasets: [{
+                    label: 'Giá trị vốn hóa thị trường (Tỷ USD)',
+                    data: [3000, 2800, 2000, 1800, 1200],
+                    backgroundColor: [
+                        energeticPalette.blue,
+                        energeticPalette.green,
+                        energeticPalette.yellow,
+                        energeticPalette.orange,
+                        energeticPalette.dark
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const bigTechCtx = document.getElementById('bigTechChart').getContext('2d');
+            new Chart(bigTechCtx, {
+                type: 'doughnut',
+                data: bigTechChartData,
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { position: 'bottom' }, title: { display: false } }
+                }
+            });
+
+            const bigTechApplicationCtx = document.getElementById('bigTechApplicationChart').getContext('2d');
+            new Chart(bigTechApplicationCtx, {
+                type: 'doughnut',
+                data: bigTechChartData,
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...multiLineTooltipTitle.plugins, legend: { position: 'bottom' }, title: { display: false } }
+                }
+            });
+
+            // Drag and Drop Game Logic
+            const dragItemsContainer = document.getElementById('drag-items-container');
+            const dropZones = document.querySelectorAll('.drop-zone');
+            const checkAnswersBtn = document.getElementById('check-answers-btn');
+            const resetGameBtn = document.getElementById('reset-game-btn');
+            const gameFeedback = document.getElementById('game-feedback');
+            let draggedItem = null;
+
+            const initialDragItems = Array.from(dragItemsContainer.children).map(item => ({
+                element: item,
+                correctPeriod: item.dataset.correctPeriod,
+                initialParent: dragItemsContainer
+            }));
+
+            function setupDragAndDrop() {
+                dragItemsContainer.innerHTML = '';
+                dropZones.forEach(zone => zone.innerHTML = `<h3 class="font-bold text-lg" style="color: #00A6ED;">${zone.querySelector('h3').textContent.split(':')[0].trim()}: ${zone.querySelector('h3').textContent.split(':')[1].trim()}</h3><p class="text-sm text-gray-500">${zone.querySelector('p').textContent}</p>`);
+                gameFeedback.textContent = '';
+                checkAnswersBtn.style.display = 'block';
+
+                initialDragItems.forEach(itemData => {
+                    const newItem = itemData.element.cloneNode(true);
+                    newItem.classList.remove('feedback-correct', 'feedback-incorrect');
+                    newItem.style.order = Math.floor(Math.random() * initialDragItems.length);
+                    newItem.draggable = true;
+                    newItem.addEventListener('dragstart', (e) => {
+                        draggedItem = newItem;
+                        e.dataTransfer.setData('text/plain', newItem.textContent);
+                        setTimeout(() => {
+                            newItem.classList.add('opacity-50');
+                        }, 0);
+                    });
+                    newItem.addEventListener('dragend', () => {
+                        newItem.classList.remove('opacity-50');
+                        draggedItem = null;
+                    });
+                    dragItemsContainer.appendChild(newItem);
+                });
+
+                dropZones.forEach(zone => {
+                    zone.classList.remove('correct', 'incorrect');
+                    zone.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        zone.classList.add('border-blue-500');
+                    });
+                    zone.addEventListener('dragleave', () => {
+                        zone.classList.remove('border-blue-500');
+                    });
+                    zone.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        zone.classList.remove('border-blue-500');
+                        if (draggedItem && draggedItem.parentNode !== zone) {
+                            if (draggedItem.parentNode && draggedItem.parentNode.classList.contains('drop-zone')) {
+                                dragItemsContainer.appendChild(draggedItem);
+                            }
+                            zone.appendChild(draggedItem);
+                        }
+                    });
+                });
+            }
+
+            checkAnswersBtn.addEventListener('click', () => {
+                let allCorrect = true;
+                dropZones.forEach(zone => {
+                    const period = zone.dataset.period;
+                    const itemsInZone = Array.from(zone.children).filter(child => child.classList.contains('drag-item'));
+                    let zoneCorrect = true;
+
+                    itemsInZone.forEach(item => {
+                        if (item.dataset.correctPeriod === period) {
+                            item.classList.add('feedback-correct');
+                            item.classList.remove('feedback-incorrect');
+                        } else {
+                            item.classList.add('feedback-incorrect');
+                            item.classList.remove('feedback-correct');
+                            zoneCorrect = false;
+                            allCorrect = false;
+                        }
+                    });
+
+                    if (zoneCorrect && itemsInZone.length > 0) {
+                        zone.classList.add('correct');
+                        zone.classList.remove('incorrect');
+                    } else if (itemsInZone.length > 0) {
+                        zone.classList.add('incorrect');
+                        zone.classList.remove('correct');
+                    } else {
+                        zone.classList.remove('correct', 'incorrect');
+                    }
+                });
+
+                if (allCorrect && Array.from(dragItemsContainer.children).length === 0) {
+                    gameFeedback.textContent = 'Chúc mừng! Bạn đã sắp xếp đúng tất cả!';
+                    gameFeedback.classList.add('feedback-correct');
+                    gameFeedback.classList.remove('feedback-incorrect');
+                    checkAnswersBtn.style.display = 'none';
+                } else {
+                    gameFeedback.textContent = 'Hãy thử lại! Một số đáp án chưa đúng hoặc còn thiếu.';
+                    gameFeedback.classList.add('feedback-incorrect');
+                    gameFeedback.classList.remove('feedback-correct');
+                }
+            });
+
+            resetGameBtn.addEventListener('click', setupDragAndDrop);
+
+            setupDragAndDrop();
+        });
+    </script>
+</body>
+</html>
