@@ -1,2 +1,2 @@
-# infographic_s-x-c-l-p-v-ph-t-tri-n-ch-ngh-a-t-b-n_b-i-2
+# su-xac-lap-va-phat-trien-cua-chu-nghia-tu-ban
 Tổng quan về chủ nghĩa tư bản
